@@ -82,6 +82,7 @@ This is the standard BN254 G2 generator point — a publicly known constant, not
 ## Exploit
 
 Exploit TX Base: https://app.blocksec.com/phalcon/explorer/tx/base/0xa88317a105155b464118431ce1073d272d8b43e87aba528a24b62075e48d929d
+
 Exploit TX ETH: https://app.blocksec.com/phalcon/explorer/tx/eth/0xce20448233f5ea6b6d7209cc40b4dc27b65e07728f2cbbfeb29fc0814e275e48
 
 // Why `delta == gamma` Breaks Everything
