@@ -280,7 +280,7 @@ function _forgeAndCollect(address lottery, uint256 root, uint256 nullifier, addr
 ```
 ============================================
         BASE CHAIN EXPLOIT (block 42650620)
-=
+
   Victim Lottery:              0xdb203504ba1fea79164AF3CeFFBA88C59Ee8aAfD
   Broken ZK Verifier:         0x02c30D32A92a3C338bc43b78933D293dED4f68C6
   Drained Token:               0x02300aC24838570012027E0A90D3FEcCEF3c51d2
