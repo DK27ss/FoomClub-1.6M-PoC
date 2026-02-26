@@ -136,6 +136,8 @@ Exploit TX ETH: https://app.blocksec.com/phalcon/explorer/tx/eth/0xce20448233f5e
 
 > **Note:** The ETH mainnet transaction (`0xce20448...`) traced in `rescue_trace_eth.txt` was a **whitehat rescue operation** executed by [`whitehat-rescue.eth`](https://etherscan.io/address/0x46c403e3DcAF219D9D4De167cCc4e0dd8E81Eb72), the same vulnerability was exploited using the identical technique (forged Groth16 proofs with `C = -vk_x`), but the funds were secured by the whitehat rather than stolen by a malicious actor, the Base transaction was the original malicious exploit.
 
+<img width="627" height="389" alt="image" src="https://github.com/user-attachments/assets/f14c08e4-85ac-49f9-8982-b7fb5eb685d5" />
+
 // Why `delta == gamma` Breaks Everything
 
 When `δ = γ`, the two rightmost pairing terms merge
