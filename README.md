@@ -124,7 +124,7 @@ function collect(
 }
 ```
 
-This is the standard BN254 G2 generator point — a publicly known constant, not a random element from a trusted setup.
+*This is the standard BN254 G2 generator point — a publicly known constant, not a random element from a trusted setup.*
 
 ---
 
