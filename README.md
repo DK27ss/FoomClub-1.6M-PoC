@@ -75,6 +75,55 @@ The Foom ZK Verifier contracts deploy verification keys where
 )
 ```
 
+## `collect()`
+
+The lottery contract exposes a `collect()` function that allows users to claim rewards by providing a Groth16 ZK proof:
+
+```solidity
+function collect(
+    uint[2] calldata _pA,
+    uint[2][2] calldata _pB,
+    uint[2] calldata _pC,
+    uint _root,
+    uint _nullifierHash,
+    address _recipient,
+    address _relayer,
+    uint _fee,
+    uint _refund,
+    uint _rewardbits,
+    uint _invest
+) payable external nonReentrant {
+    require(nullifier[_nullifierHash] == 0, "Incorrect nullifier");
+    nullifier[_nullifierHash] = 1;
+    require(msg.value == _refund, "Incorrect refund amount received by the contract");
+
+    uint reward = uint(betMin) * (
+        (_rewardbits & 0x1 > 0 ? 1 : 0) * 2**betPower1 +
+        (_rewardbits & 0x2 > 0 ? 1 : 0) * 2**betPower2 +
+        (_rewardbits & 0x4 > 0 ? 1 : 0) * 2**betPower3
+    );
+    reward = reward * (100 - dividendFeePerCent - generatorFeePerCent) / 100;
+
+    require(reward >= _fee, "Insufficient reward");
+    require(roots[_root] > 0, "Cannot find your merkle root");
+
+    uint balance = _balance();
+    require(balance >= _fee, "Insufficient balance");
+
+    // proof verification against the BROKEN verifier !
+    require(
+        withdraw.verifyProof(
+            _pA, _pB, _pC,
+            [_root, _nullifierHash, _rewardbits,
+             uint(uint160(_recipient)), uint(uint160(_relayer)), _fee, _refund]
+        ),
+        "Invalid withdraw proof"
+    );
+
+    // ... reward distribution, dividend, invest logic, token transfer
+}
+```
+
 This is the standard BN254 G2 generator point — a publicly known constant, not a random element from a trusted setup.
 
 ---
